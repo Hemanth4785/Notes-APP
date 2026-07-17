@@ -35,7 +35,7 @@ function NoteForm({ addNote, editNote, updateNote }) {
   <div className="w-full flex justify-center p-4">
     <form onSubmit={handleSubmit} className="bg-[#121212] border border-solid border-[#1f1f1f] rounded-lg p-8 w-full max-w-125 flex flex-col gap-4 text-left">
       <h3 className="text-xl font-semibold text-white mb-1">
-        {editNote ? 'Edit Your Note' : 'Submit Your Notes'}
+        {editNote ? 'Edit Your Note' : 'Submit Your code'}
       </h3>
       
       <input 
@@ -47,7 +47,7 @@ function NoteForm({ addNote, editNote, updateNote }) {
 />
 
 <textarea 
-  placeholder="Content" 
+  placeholder="Enter your Content" 
   value={content} 
   onChange={(e) => setContent(e.target.value)} 
   className="bg-[#161616] rounded-md text-white p-3 text-sm w-full outline-none min-h-30 resize-y font-mono border border-solid border-[#2a2a2a] focus:border-[#6a6a6a]"
