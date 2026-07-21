@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import NoteForm from './components/NoteForm';
 import Navbar from './components/Navbar';
 import NoteList from './components/NoteList';
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(() => {
+  const savedNotes = localStorage.getItem("notes");
+
+  return savedNotes ? JSON.parse(savedNotes) : [];
+});
   const [editNote, setEditNote] = useState(null); // 1. Holds the note being edited
 
   function addNote(note) {
@@ -30,6 +34,10 @@ function App() {
   function handleEditClick(note, index) {
     setEditNote({ ...note, index });
   }
+  useEffect(() => {
+  localStorage.setItem("notes", JSON.stringify(notes));
+}, [notes]);
+
 
   return (
   <div className="min-h-screen text-white flex flex-col items-center gap-8 px-4 py-10 max-w-4xl mx-auto">
